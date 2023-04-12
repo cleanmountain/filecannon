@@ -12,3 +12,7 @@ This is the faster and easier alternative with a web interface, hosted entirely 
 4. Hit the `Clear` button when the database becomes too large
 
 ...secure from other users on the same network? **Nope!**
+
+## Examples
+
+![Screenshot from 2023-04-12 21-18-41](https://user-images.githubusercontent.com/120788835/231567957-e628c805-1d4e-44a9-83f4-e269ca2faecd.png)
