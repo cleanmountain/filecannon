@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1 class="title">{% block title %} Uploads {% endblock %}</h1>
+
+    <div class="content">
+
+        <div class="uploads">
+
+        {% for file in uploads %}
+
+                <div class="upload">
+                    <p class="file-name">{{ file.filename }}</p>
+                    <p class="file-timestamp">{{ file.timestamp }}</p>
+                    <a class="file-downloadlink" href="/download/{{ file.id }}">Download</a>
+                </div>
+
+        {% endfor %}
+
+        </div>
+
+    </div>
+
+{% endblock %}

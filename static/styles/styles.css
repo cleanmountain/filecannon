@@ -1,0 +1,86 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #303036;
+    color: #FFFAFF;
+}
+
+.content {
+    text-align: center;
+}
+
+.nav-div {
+    border-bottom: 1px solid #FC5130;
+    margin-bottom: 2rem;
+}
+
+nav {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+nav a {
+    color: #FC5130;
+    font-size: 30px;
+    padding: 2rem;
+    text-decoration: none;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.title {
+    margin: 5px;
+}
+
+.upload {
+    margin: 2rem;
+    margin-bottom: 4rem;
+}
+
+.file-name {
+    color: #FC5130;
+}
+
+.file-downloadlink {
+    color:#FC5130;
+    text-decoration: none;
+}
+
+.bio {
+    padding: 10px;
+    margin: 5px;
+    background-color: #ffffff;
+    color: #004835;
+}
+
+.name a {
+    color: #00a36f;
+    text-decoration: none;
+}
+
+
+.file-input {
+    padding: 1rem;
+    color: #FFFAFF;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 16px;
+}
+
+.file-submit {
+    background-color: #FC5130;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+.file-submit:hover {
+    background-color: #bbb;
+}

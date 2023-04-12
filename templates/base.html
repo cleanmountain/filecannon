@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filecannon</title>
+    <link rel="stylesheet" type="text/css" href= "/static/styles/styles.css">
+</head>
+<body>
+    <div class="nav-div">
+        <nav>
+            <a href="{{ url_for('uploads_overview') }}">Home</a>
+            <a href="/upload">Upload</a>
+            <a href="/clear">Clear</a>
+        </nav>
+    </div>
+
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>
