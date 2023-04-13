@@ -16,7 +16,6 @@ class Upload(db.Model):
     timestamp = db.Column(db.String(19))
     data = db.Column(db.LargeBinary)
 
-
 @app.route("/", methods=["GET", "POST"])
 def uploads_overview():
     uploads = Upload.query.order_by(Upload.id.desc()).all()    
