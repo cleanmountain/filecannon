@@ -17,15 +17,14 @@ Secure from other users on the same network? **Nope!** ...but convenient.
 
 ## Preparation
 ### [Optional] Setup venv
-*1.1 Create venv*
+1.1 Create venv
 
-`python -m venv venv`
+    python -m venv venv
 
-*1.2 Activate the venv*
+1.2 Activate the venv
 
-Linux: `source venv/bin/activate`
-
-Windows: `venv\Scripts\Activate`
+    Linux: source venv/bin/activate
+    Windows: venv\Scripts\Activate
 
 ### 1) Install requirements.txt
 `pip install -r requirements.txt`
@@ -35,12 +34,12 @@ Windows: `venv\Scripts\Activate`
 
 ---
 
-## Run the webserver
-`python app.py`
+## Run it!
+Launch the app by running:
 
----
+    python app.py
 
-## Access the webserver
+### Access the web server from other devices
 If host machine has IP `192.168.0.50`, and the app runs on port `8000`, then another device on the LAN can go to `http://192.168.0.50:8000` to access the web server.
 
 ---
