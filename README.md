@@ -27,10 +27,10 @@ Secure from other users on the same network? **Nope!** ...but convenient.
     Windows: venv\Scripts\Activate
 
 ### 1) Install requirements.txt
-`pip install -r requirements.txt`
+    pip install -r requirements.txt
 
 ### 2) Run the setup
-`python setup.py`
+    python setup.py
 
 ---
 
