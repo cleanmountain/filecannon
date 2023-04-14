@@ -25,10 +25,12 @@ def uploads_overview():
 @app.route("/upload", methods=["GET", "POST"])
 def upload():
     if request.method == "POST":
-        file = request.files["file"]
-        upload = Upload(filename=file.filename, data=file.read(), timestamp=get_time())
-        db.session.add(upload)
-        db.session.commit()
+        # file = request.files["file"]
+        files = request.files.getlist("file")
+        for file in files:
+            upload = Upload(filename=file.filename, data=file.read(), timestamp=get_time())
+            db.session.add(upload)
+            db.session.commit()
         return redirect(url_for("uploads_overview"))
     
     return render_template("upload-file.html")
