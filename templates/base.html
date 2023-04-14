@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Filecannon</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" type="text/css" href= "/static/styles/styles.css">
 </head>
 <body>
+
     <div class="nav-div">
         <nav>
-            <a href="{{ url_for('uploads_overview') }}">Home</a>
+            <a href="/">Home</a>
             <a href="/upload">Upload</a>
-            <a href="/clear">Clear</a>
+            <a href="/access">Access</a>
+            <a href="/clear" onclick="return confirm('Are you sure you want to clear the database?')">Clear</a>
         </nav>
+        
     </div>
 
     <div class="content">

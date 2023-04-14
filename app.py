@@ -1,7 +1,11 @@
+import os
 from io import BytesIO
 import datetime
 from flask import Flask, render_template, request, send_file, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+import qrcode
+
+os.chdir(os.path.dirname(__file__))
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db.sqlite3"
@@ -16,6 +20,14 @@ class Upload(db.Model):
     timestamp = db.Column(db.String(19))
     data = db.Column(db.LargeBinary)
 
+@app.before_first_request
+def my_func():
+    host = request.host
+    print(f"host is: {host}")
+    url = f"http://{host}/"
+    make_shortcut_qr(url)
+
+
 @app.route("/", methods=["GET", "POST"])
 def uploads_overview():
     uploads = Upload.query.order_by(Upload.id.desc()).all()    
@@ -25,7 +37,6 @@ def uploads_overview():
 @app.route("/upload", methods=["GET", "POST"])
 def upload():
     if request.method == "POST":
-        # file = request.files["file"]
         files = request.files.getlist("file")
         for file in files:
             upload = Upload(filename=file.filename, data=file.read(), timestamp=get_time())
@@ -48,11 +59,21 @@ def clear():
     db.session.commit()
     return redirect(url_for("uploads_overview"))
 
+@app.route("/access")
+def access():
+    return render_template("access.html")
 
 def get_time() -> str:
     time: str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return time
 
+def make_shortcut_qr(url) -> None:
+    qr = qrcode.QRCode(border=4)
+    qr.add_data(url)
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="#FC5130", back_color="#303036")
+    print(f"made image from qr")
+    img.save("./static/qr.png")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)
