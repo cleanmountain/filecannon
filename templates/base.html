@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Filecannon</title>
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="stylesheet" type="text/css" href= "/static/styles/styles.css">
-</head>
-<body>
-
+{% extends "layout.html" %}
+{% block body %}
     <div class="nav-div">
         <nav>
             <a href="/">Home</a>
@@ -21,5 +13,4 @@
     <div class="content">
         {% block content %} {% endblock %}
     </div>
-</body>
-</html>
+{% endblock %}

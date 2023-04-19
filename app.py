@@ -1,7 +1,7 @@
 import os
 from io import BytesIO
 import datetime
-from flask import Flask, render_template, request, send_file, redirect, url_for
+from flask import Flask, render_template, request, send_file, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 import qrcode
 
@@ -36,14 +36,25 @@ def uploads_overview():
 
 @app.route("/upload", methods=["GET", "POST"])
 def upload():
+    upload_count = 0
+
     if request.method == "POST":
         files = request.files.getlist("file")
+        
+        if not files[0].filename:
+            flash("No file was submitted.", "error")
+            return redirect(url_for("upload"))
+
         for file in files:
+            upload_count += 1
             upload = Upload(filename=file.filename, data=file.read(), timestamp=get_time())
             db.session.add(upload)
             db.session.commit()
-        return redirect(url_for("uploads_overview"))
-    
+        
+        flash(f"Uploaded {upload_count} file(s)!", "success")
+        upload_count = 0
+        return redirect(url_for("upload"))
+
     return render_template("upload-file.html")
 
 
