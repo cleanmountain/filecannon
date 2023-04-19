@@ -46,4 +46,4 @@ If host machine has IP `192.168.0.50`, and the app runs on port `8000`, then ano
 
 ## Screenshot
 
-![Screenshot from 2023-04-12 21-18-41](https://user-images.githubusercontent.com/120788835/231567957-e628c805-1d4e-44a9-83f4-e269ca2faecd.png)
+![Screenshot from 2023-04-17 18-24-23](https://user-images.githubusercontent.com/120788835/232559023-be7217af-71ad-441a-994f-12fc0781590b.png)
