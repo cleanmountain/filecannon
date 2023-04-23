@@ -37,10 +37,10 @@ Secure from other users on the same network? **Nope!** ...but convenient.
 ## Run it!
 Launch the app by running:
 
-    python app.py
+    gunicorn --workers 2 --bind <IP>:<PORT> wsgi:app
 
 ### Access the web server from other devices
-If host machine has IP `192.168.0.50`, and the app runs on port `8000`, then another device on the LAN can go to `http://192.168.0.50:8000` to access the web server.
+If host machine has IP `192.168.0.50`, and the app runs on port `8080`, then another device on the LAN can go to `http://192.168.0.50:8080` to access.
 
 ---
 

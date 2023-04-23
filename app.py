@@ -23,7 +23,6 @@ class Upload(db.Model):
 @app.before_first_request
 def my_func():
     host = request.host
-    print(f"host is: {host}")
     url = f"http://{host}/"
     make_shortcut_qr(url)
 
@@ -83,8 +82,4 @@ def make_shortcut_qr(url) -> None:
     qr.add_data(url)
     qr.make(fit=True)
     img = qr.make_image(fill_color="#FC5130", back_color="#303036")
-    print(f"made image from qr")
     img.save("./static/qr.png")
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=True)
