@@ -7,11 +7,8 @@ This is the faster and easier alternative with a web interface, hosted entirely 
 
 ## How It Works
 1. Launch the Flask server
-2. Access the web server from another LAN device `http://<HOST-IP>:<APP-PORT>`
+2. Access the web server from another LAN device
 3. Upload and download files as you wish
-4. Hit the `Clear` button when the database becomes too large
-
-Secure from other users on the same network? **Nope!** ...but convenient.
 
 ---
 
@@ -38,9 +35,6 @@ Secure from other users on the same network? **Nope!** ...but convenient.
 Launch the app by running:
 
     gunicorn -c gunicorn.conf.py wsgi:app
-
-### Access the web server from other devices
-If host machine has IP `192.168.0.50`, and the app runs on port `8080`, then another device on the LAN can go to `http://192.168.0.50:8080` to access.
 
 ---
 
