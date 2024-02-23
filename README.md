@@ -40,4 +40,4 @@ Launch the app by running:
 
 ## Screenshot
 
-![Screenshot from 2023-04-17 18-24-23](https://user-images.githubusercontent.com/120788835/232559023-be7217af-71ad-441a-994f-12fc0781590b.png)
+![image](https://github.com/cleanmountain/filecannon/assets/120788835/3f23b28d-3ea6-4a80-8c8e-28e1998a9662)
