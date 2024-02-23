@@ -2,34 +2,27 @@
 
 {% block content %}
 
-    <h1 class="title">{% block title %} Uploads {% endblock %}</h1>
     <h3 id="empty-title" style="display: none; font-weight: normal;">Empty</h3>
 
     <div class="content">
-
         <div class="uploads">
-
-        {% for file in uploads %}
-
-                <div class="upload">
-                    <p class="file-name">{{ file.filename }}</p>
-                    <p class="file-timestamp">{{ file.timestamp }}</p>
-                    <a class="file-downloadlink" href="/download/{{ file.id }}">Download</a>
-                </div>
-
-                <div id="horizontal-line"></div>
-
-        {% endfor %}
-
+            <table id="uploads-table">
+                {% for file in uploads %}
+                    <tr>
+                        <td><p class="file-timestamp">{{ file.timestamp_formatted }}</p></td>
+                        <td><p class="file-size">{{ file.size_formatted }}</p></td>
+                        <td><a class="file-downloadlink" href="/download/{{ file.id }}">{{ file.filename }}</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
         </div>
-
     </div>
 
     <script>
         let emptyTitle = document.querySelector("#empty-title");
-        let uploadsDiv = document.querySelector(".uploads");
+        let uploadsTable = document.querySelector("#uploads-table");
         
-        if (uploadsDiv.innerHTML.trim() === "") {
+        if (uploadsTable.innerHTML.trim() === "") {
             emptyTitle.style.display = "block";
         }
 

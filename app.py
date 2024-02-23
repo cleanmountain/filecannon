@@ -17,14 +17,16 @@ db = SQLAlchemy(app)
 
 class Upload(db.Model):
     id = db.Column(db.String, primary_key=True)
-    filename = db.Column(db.String(50))
-    timestamp = db.Column(db.String(20))
-    path = db.Column(db.String(255))
-
+    filename = db.Column(db.String)
+    timestamp = db.Column(db.String)
+    timestamp_formatted = db.Column(db.String)
+    path = db.Column(db.String)
+    size_bytes = db.Column(db.BigInteger)
+    size_formatted = db.Column(db.String)
 
 @app.route("/", methods=["GET", "POST"])
 def uploads_overview():
-    uploads = Upload.query.order_by(Upload.id.desc()).all()    
+    uploads = Upload.query.order_by(Upload.timestamp.desc()).all()
     return render_template("uploads.html", uploads=uploads)
 
 
@@ -45,7 +47,8 @@ def upload():
             Path(app.config["UPLOAD_FOLDER"]).mkdir(parents=True, exist_ok=True)
             file.save(os.path.join(app.config["UPLOAD_FOLDER"], upload_id))
             path = f"{app.config['UPLOAD_FOLDER']}/{upload_id}"
-            upload = Upload(id=upload_id, filename=file.filename, timestamp=get_time(), path=path)
+            file_size = os.stat(path).st_size
+            upload = Upload(id=upload_id, filename=file.filename, timestamp=get_time(), timestamp_formatted=get_time(format=True), path=path, size_bytes=file_size, size_formatted=format_file_size(file_size))
             db.session.add(upload)
             db.session.commit()
         
@@ -79,6 +82,23 @@ def access():
     return render_template("access.html")
 
 
-def get_time() -> str:
-    time: str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+def get_time(format=False) -> str:
+    time = datetime.datetime.now()
+    if format:
+     return time.strftime("%Y-%m-%d %H:%M:%S")
     return time
+
+
+def format_file_size(b):
+    kb = b / 1024
+    mb = kb / 1024
+    gb = mb / 1024
+
+    if gb >= 1:
+        return f"{gb:.2f} GB"
+    if mb >= 1:
+        return f"{mb:.2f} MB"
+    if kb >= 1:
+        return f"{kb:.2f} KB"
+    
+    return f"{b} B"

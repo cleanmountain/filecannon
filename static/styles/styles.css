@@ -6,64 +6,63 @@ body {
 
 .content {
     text-align: center;
+    margin-top: 2rem;
 }
 
 .nav-div {
-    border-bottom: 1px solid #dfc7c7;
-    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #cadfc7;
 }
 
-nav {
+.nav-div nav {
+    margin-left: 0;
+    margin-right: 0;
     margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
-nav a {
-    color: #FC5130;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    margin: 2rem;
-    font-size: 25px;
+.nav-div nav a {
     text-decoration: none;
 }
 
-.center {
+.nav-icon {
+    margin: 0 2rem;
+    fill: white;
+}
+
+@media only screen and (max-width: 600px) {
+    /* Adjust styles for mobile devices */
+    .nav-icon {
+        margin: 0 1rem;
+    }
+}
+
+.uploads {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
-.title {
-    margin: 5px;
+#uploads-table {
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 30px 0;
 }
 
-.upload {
-    margin: 2rem;
+#uploads-table td {
+    max-width: 200px;
+    overflow-wrap: break-word;
 }
 
-.file-name {
-    color: #FC5130;
+.file-size {
+    text-align: right;
 }
 
 .file-downloadlink {
-    color:#FC5130;
+    color:#c2ff7b;
     text-decoration: none;
 }
-
-.bio {
-    padding: 10px;
-    margin: 5px;
-    background-color: #ffffff;
-    color: #004835;
-}
-
-.name a {
-    color: #00a36f;
-    text-decoration: none;
-}
-
 
 .file-input {
     padding: 1rem;
@@ -78,8 +77,8 @@ nav a {
 }
 
 .file-submit {
-    background-color: #FC5130;
-    color: #fff;
+    background-color: #b9ff78;
+    color: #303036;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
@@ -92,15 +91,8 @@ nav a {
 }
 
 #qr-img {
-    margin-top: 2rem;
     width: 250px;
     height: 250px;
-}
-
-#horizontal-line {
-    border-bottom: 1px solid #534e4e;
-    width: 25%;
-    margin: auto;
 }
 
 .flash-div {

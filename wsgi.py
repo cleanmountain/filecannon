@@ -14,7 +14,7 @@ def make_shortcut_qr(url) -> None:
     qr = qrcode.QRCode(border=4)
     qr.add_data(url)
     qr.make(fit=True)
-    img = qr.make_image(fill_color="#FC5130", back_color="#303036")
+    img = qr.make_image(fill_color="#c2ff7b", back_color="#303036")
     img.save("./static/qr.png")
 
 if __name__ == "__main__":
