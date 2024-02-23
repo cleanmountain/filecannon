@@ -4,8 +4,6 @@ import datetime
 from pathlib import Path
 from flask import Flask, render_template, request, send_file, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
-import qrcode
-from get_ip import get_local_ip
 
 os.chdir(os.path.dirname(__file__))
 
@@ -22,13 +20,6 @@ class Upload(db.Model):
     filename = db.Column(db.String(50))
     timestamp = db.Column(db.String(20))
     path = db.Column(db.String(255))
-
-
-@app.before_first_request
-def my_func():
-    host = get_local_ip()
-    url = f"http://{host}/"
-    make_shortcut_qr(url)
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -91,11 +82,3 @@ def access():
 def get_time() -> str:
     time: str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return time
-
-
-def make_shortcut_qr(url) -> None:
-    qr = qrcode.QRCode(border=4)
-    qr.add_data(url)
-    qr.make(fit=True)
-    img = qr.make_image(fill_color="#FC5130", back_color="#303036")
-    img.save("./static/qr.png")

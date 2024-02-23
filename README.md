@@ -34,7 +34,7 @@ This is the faster and easier alternative with a web interface, hosted entirely 
 ## Run it!
 Launch the app by running:
 
-    gunicorn -c gunicorn.conf.py wsgi:app
+    gunicorn -c conf.py  "wsgi:start()" 
 
 ---
 
